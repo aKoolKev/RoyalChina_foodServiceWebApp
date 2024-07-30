@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Display</title>
+</head>
+<body>
+    <h1>Submitted Orders</h1>
+    <div id="orders-container">
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBCNsFISDOjgwxan5lyn_DtYKqEoRPO2ZI",
+          authDomain: "royalchina-onlineorderdisplay.firebaseapp.com",
+          databaseURL: "https://royalchina-onlineorderdisplay-default-rtdb.firebaseio.com",
+          projectId: "royalchina-onlineorderdisplay",
+          storageBucket: "royalchina-onlineorderdisplay.appspot.com",
+          messagingSenderId: "963052431393",
+          appId: "1:963052431393:web:f10641431e705d5eac5b60",
+        //   measurementId: "G-R73X48R3PW"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        const ordersContainer = document.getElementById('orders-container');
+
+        function fetchOrders() {
+            //ORDERS -> order -> [order object]
+            database.ref('ORDERS').on('value', (snapshot) => {
+                const orders = snapshot.val();
+                ordersContainer.innerHTML = '';  // Clear previous orders
+                ordersContainer.appendChild(document.createElement('hr'));
+
+                for (let orderId in orders) {
+                    const order_ulEl = document.createElement('ul');
+                    
+                    const order = orders[orderId].order; //an order
+
+                    // iterate through order array
+                    for (let i=0; i<order.length;i++){
+                        const order_liEl = document.createElement('li');
+                        order_liEl.appendChild(document.createTextNode(order[i].name));
+                        order_ulEl.appendChild(order_liEl);
+                    }
+                    
+                    ordersContainer.appendChild(order_ulEl);
+                    ordersContainer.appendChild(document.createElement('hr'));
+                    // orderDiv.textContent = order.join(', ');
+        
+                }
+            });
+        }
+
+        fetchOrders();  // Initial fetch
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+button{
+    margin:0;
+    padding: 0;
+
+}
+
+.body-container{
+    display: flex;
+}
+
+.Appetizer-container{
+    display: flex;
+    flex-direction: row;
+}
+
+#Appetizers-price-container{
+    list-style-type: none;
+    text-align:right;
+}
+
+#Appetizers-add-button-container{
+    list-style-type: none;
+}
+
+
+.shopping-cart-container{
+    background-color: beige;
+    width:15vw;
+}

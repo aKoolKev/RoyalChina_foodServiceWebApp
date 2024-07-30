@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal China Cashier Side</title>
+    <link rel="stylesheet" href="orderFood.css">
+    <script src="orderFood.js"></script>
+</head>
+<body>
+    <h1>Royal China Cashier Side</h1>
+    <hr>
+
+    <!-- <div id="food-buttons">
+        <button onclick="selectFood('Burger')">Burger</button>
+        <button onclick="selectFood('Pizza')">Pizza</button>
+        <button onclick="selectFood('Salad')">Salad</button>
+        <button onclick="selectFood('Soda')">Soda</button>
+    </div> -->
+
+
+    <div class="shortcut-buttons">
+        <h1>CATEGORIES</h1>
+        <a href="#Appetizers"><button>Appetizers</button></a>
+        <a href="#Soup"><button>Soup</button></a>
+
+        <a href="#Fried-Rice"><button>Fried Rice</button></a>
+        <a href="#Chow-Mein"><button>Chow Mein</button></a>
+        <a href="#Lo-Mein"><button>Lo Mein</button></a>
+        <a href="#Chow-Mei-Fun"><button>Chow Mei Fun</button></a>
+
+        <a href="#Chop-Suey"><button>Chop Suey</button></a>
+
+        <a href="#Beef"><button>Beef</button></a>
+        <a href="#Chicken"><button>Chicken</button></a>
+        <a href="#Seafood"><button>Seafood</button></a>
+        <a href="#Sweet&Sour"><button>Sweet & Sour</button></a>
+        <a href="#Combination-Dish"><button>Combination Dish</button></a>
+        <a href="#Chef-Specialties"><button>Chef Specialties</button></a>
+        <a href="#Egg-Foo-Young"><button>Egg Foo Young</button></a>
+        <a href="#Vegetable-Dishes"><button>Vegetable Dishes<button></a>
+        <a href="#St-Paul-Sandwich"><button>St. Paul Sandwich</button></a>
+        <a href="#Side-Orders"><button>Side Orders</button></a>
+    </div>
+    <hr>
+    
+    <div class="body-container">
+
+        <div class="menu-container">
+
+            <h1 id="Appetizers">Appetizers</h1>
+            <div class="Appetizer-container">
+    
+                <!-- appetizer's name -->
+                <ol id="Appetizers-name-container"></ol>
+    
+                <!-- appetizer's price -->
+                <ol id="Appetizers-price-container" ></ol>
+    
+                <!-- appetizer's add button -->
+                <ol id="Appetizers-add-button-container"></ol>                
+            </div>
+    
+            
+            
+            <hr>
+            <h1 id="Soup">Soup</h1>
+            <hr>
+            <h1 id="Fried-Rice">Fried Rice</h1>
+            <hr>
+            <h1 id="Lo-Mein">Lo Mein</h1>
+            <hr>
+            <h1 id="Chow-Mei-Fun">Chow Mei Fun</h1>
+            <hr>
+            <h1 id="Chow-Mein">Chow Mein</h1>
+            <hr>
+            <h1 id="Chop-Suey">Chop Suey</h1>
+            <hr>
+            <h1 id="Beef">Beef</h1>
+            <hr>
+            <h1 id="Chicken">Chicken</h1>
+            <hr>
+            <h1 id="Seafood">Seafood</h1>
+            <hr>
+            <h1 id="Sweet&Sour">Sweet & Sour</h1>
+            <hr>
+            <h1 id="Combination-Dish">Combination Dish</h1>
+            <hr>
+            <h1 id="Chef-Specialties">Chef Specialties</h1>
+            <hr>
+            <h1 id="Egg-Foo-Young">Egg Foo Young</h1>
+            <hr>
+            <h1 id="Vegetable-Dishes">Vegetable Dishes</h1>
+            <hr>
+            <h1 id="St-Paul-Sandwich">St. Paul Sandwich</h1>
+            <hr>
+            <h1 id="Side-Orders">Side Orders</h1>
+            <hr>
+    
+            
+            
+        </div> <!-- End of menu-container -->
+        
+        
+        <div class="shopping-cart-container">
+            <h1>Shopping Cart</h1>
+            Subtotal: $ <span id="display-subtotal">0.00</span>
+            <br> 
+            Grand total: $ <span id="display-grand-total">0.00</span>
+            <br>
+            <button id="clear-shopping-cart-button">Empty Cart</button>
+            <br>
+            <!-- <button onclick="submitOrder()">Submit Order</button> -->
+            <button id="submit-order-button"> Submit Order</button>
+            <hr>
+            
+            <ul id="shopping-cart-content-container"></ul>
+            
+        </div> 
+        
+        <script src="load-menu-item.js"></script>
+    </div> <!-- End of body container-->
+    
+    
+
+    <!-- Load firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="fire-base-config.js"></script>
+</body>
+</html>
