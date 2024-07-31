@@ -22,8 +22,11 @@ button{
     list-style-type: none;
 }
 
-
+.menu-container{
+    background-color: tan;
+    width:75vw;
+}
 .shopping-cart-container{
     background-color: beige;
-    width:15vw;
+    width:50vw;
 }

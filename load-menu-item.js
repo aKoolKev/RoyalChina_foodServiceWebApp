@@ -41,15 +41,19 @@ function displayShoppingCart(){
 
     for(const order of shoppingCart){
         const order_liEl = document.createElement('li');
-        order_liEl.appendChild(document.createTextNode(order.name));
+        const remove_buttonEl = document.createElement('button');
+        remove_buttonEl.innerHTML = "X";
+        remove_buttonEl.value = order.name;
+        remove_buttonEl.addEventListener('click', removeItemFromShoppingCart);
+        order_liEl.append(remove_buttonEl, document.createTextNode(order.name))
         shoppingCartContentContainer.appendChild(order_liEl);
     }
 
+    //compute the cost in the shopping cart
     const displaySubtotal = document.getElementById("display-subtotal");
     const displayGrandTotal = document.getElementById("display-grand-total");
     displaySubtotal.innerHTML = getSubTotal().toFixed(2);
     displayGrandTotal.innerHTML = getGrandTotal(getSubTotal()).toFixed(2);
-
 
 }
 
@@ -66,6 +70,20 @@ function addItemToShoppingCart(itemName, itemPrice){
     shoppingCart.push(order);
 
     //display added item in shopping cart
+    displayShoppingCart();
+}
+
+//remove an item from the shopping cart
+function removeItemFromShoppingCart(e){
+
+    //item to remove
+    const itemToRemove = e.target.value;
+
+    //remove the item
+    let filteredCart = shoppingCart.filter(item =>item.name !=itemToRemove);
+    shoppingCart = filteredCart;
+
+    //display the shopping cart with the item removed
     displayShoppingCart();
 }
 
@@ -91,6 +109,8 @@ function clearCart(){
     shoppingCart.length=0; //empty cart
     displayShoppingCart(); //show empty cart
 }
+
+
 
 function submitOrder() {
     if (shoppingCart.length === 0) {
