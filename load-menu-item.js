@@ -52,15 +52,20 @@ function loadAppetizers(){
         incrementQuanity_buttonEl.innerText = "+";
         incrementQuanity_buttonEl.className = "increment-quanity-button";
         incrementQuanity_buttonEl.addEventListener('click', ()=>{
+            //map the increment button to the respective appetizer
             const mappedTo = appetizerNames[i];
             let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
             document.getElementById(mappedTo).innerText = currQuanity+1;
+
+            // 
+
         });
 
         const decrementQuanity_buttonEl = document.createElement('button');
         decrementQuanity_buttonEl.innerText = "-";
         decrementQuanity_buttonEl.className = "decrement-quanity-button";
         decrementQuanity_buttonEl.addEventListener('click', ()=>{
+            //map the increment button to the respective appetizer
             const mappedTo = appetizerNames[i];
             let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
             
@@ -92,11 +97,17 @@ function displayShoppingCart(){
 
     for(const order of shoppingCart){
         const order_liEl = document.createElement('li');
+
+        // remove button
         const remove_buttonEl = document.createElement('button');
         remove_buttonEl.innerHTML = "X";
+        remove_buttonEl.className = "remove-item-button";
         remove_buttonEl.value = order.name;
         remove_buttonEl.addEventListener('click', removeItemFromShoppingCart);
-        order_liEl.append(remove_buttonEl, document.createTextNode(order.name))
+
+        // display item name and quanity
+        order_liEl.append(remove_buttonEl, document.createTextNode(order.name), document.createTextNode(' [' + order.quanity + ']'));
+
         shoppingCartContentContainer.appendChild(order_liEl);
     }
 
@@ -111,17 +122,21 @@ function displayShoppingCart(){
 //adds an item to the shopping cart
 function addItemToShoppingCart(itemName, itemPrice){
 
-     //create Order object
-     const order = {
+    //create Order object
+    const order = {
         name: itemName,
-        price: itemPrice
+        price: itemPrice,
+        quanity: parseInt(document.getElementById(itemName).innerText)
     }
 
-    //add Order object to shopping cart
-    shoppingCart.push(order);
+    //only add item with a valid quanity
+    if(order.quanity>0){
+        //add Order object to shopping cart
+        shoppingCart.push(order);
 
-    //display added item in shopping cart
-    displayShoppingCart();
+        //display added item in shopping cart
+        displayShoppingCart();
+    }
 }
 
 //remove an item from the shopping cart

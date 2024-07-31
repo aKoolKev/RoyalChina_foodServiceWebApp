@@ -25,8 +25,11 @@ button{
     text-align: center;
     background-color: yellow;
     margin-top: 0;
-    
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+
 
 #Appetizers-quanity-button-container{
     background: orange;
@@ -54,6 +57,9 @@ button{
     margin-top: 0;
 }
 
+.remove-item-button{
+    margin-right: 5px;
+}
 
 
 
@@ -64,4 +70,8 @@ button{
 .shopping-cart-container{
     background-color: beige;
     width:50vw;
+}
+
+#shopping-cart-content-container{
+    list-style: circle;
 }
