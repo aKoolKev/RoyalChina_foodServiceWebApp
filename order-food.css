@@ -11,14 +11,32 @@ button{
 .Appetizer-container{
     display: flex;
     flex-direction: row;
+    background-color: gray;
 }
 
 #Appetizers-price-container{
     list-style-type: none;
     text-align:right;
+    background: red;
 }
 
 #Appetizers-add-button-container{
+    list-style-type: none;
+    background-color: navy;
+}
+
+#Appetizers-name-container, #Appetizers-price-container, #Appetizers-add-button-container, #Appetizers-quanity-button-container{
+    margin-top: 0;
+}
+
+#Appetizers-quanity-display-container{
+    text-align: center;
+    background-color: yellow;
+    width: 30px;
+}
+
+#Appetizers-quanity-button-container{
+    background: orange;
     list-style-type: none;
 }
 
