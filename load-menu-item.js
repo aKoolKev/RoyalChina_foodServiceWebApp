@@ -31,6 +31,7 @@ function loadAppetizers(){
         //display quanity 
         const quanity_spanEl = document.createElement('span');
         quanity_spanEl.className = "Appetizers-display-quanity";
+        quanity_spanEl.id = appetizerNames[i]; //id is appetizer's name
         quanity_spanEl.innerText = '0';
         const leftBracket_spanEl = document.createElement('span');
         leftBracket_spanEl.innerText = '[';
@@ -51,19 +52,21 @@ function loadAppetizers(){
         incrementQuanity_buttonEl.innerText = "+";
         incrementQuanity_buttonEl.className = "increment-quanity-button";
         incrementQuanity_buttonEl.addEventListener('click', ()=>{
-            let currQuanity = parseInt(appetizerDisplayQuanity.innerText);
-            appetizerDisplayQuanity.innerText = currQuanity+1;
+            const mappedTo = appetizerNames[i];
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
+            document.getElementById(mappedTo).innerText = currQuanity+1;
         });
 
         const decrementQuanity_buttonEl = document.createElement('button');
         decrementQuanity_buttonEl.innerText = "-";
         decrementQuanity_buttonEl.className = "decrement-quanity-button";
         decrementQuanity_buttonEl.addEventListener('click', ()=>{
-            let currQuanity = parseInt(appetizerDisplayQuanity.innerText);
+            const mappedTo = appetizerNames[i];
+            let currQuanity = parseInt(document.getElementById(mappedTo).innerText);
             
             //non-negative quanity
             if(currQuanity > 0)
-                appetizerDisplayQuanity.innerText = currQuanity-1;
+                document.getElementById(mappedTo).innerText = currQuanity-1;
         });
 
         //decrement
