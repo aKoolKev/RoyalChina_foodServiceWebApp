@@ -1,7 +1,6 @@
 button{
     margin:0;
-    padding: 0;
-
+    padding:0;
 }
 
 .body-container{
@@ -15,30 +14,48 @@ button{
 }
 
 #Appetizers-price-container{
-    list-style-type: none;
-    text-align:right;
+    list-style: none;
+    text-align:center;
     background: red;
-}
-
-#Appetizers-add-button-container{
-    list-style-type: none;
-    background-color: navy;
-}
-
-#Appetizers-name-container, #Appetizers-price-container, #Appetizers-add-button-container, #Appetizers-quanity-button-container{
-    margin-top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #Appetizers-quanity-display-container{
     text-align: center;
     background-color: yellow;
-    width: 30px;
+    margin-top: 0;
+    
 }
 
 #Appetizers-quanity-button-container{
     background: orange;
-    list-style-type: none;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+
+#Appetizers-quanity-button-container li {
+    background-color: lavender;
+}
+
+.decrement-quanity-button{
+    margin-left: 5px;
+}
+
+#Appetizers-add-button-container{
+    list-style: none;
+    background-color: navy;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#Appetizers-name-container, #Appetizers-price-container, #Appetizers-add-button-container, #Appetizers-quanity-button-container{
+    margin-top: 0;
+}
+
+
+
 
 .menu-container{
     background-color: tan;

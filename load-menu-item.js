@@ -11,7 +11,7 @@ function loadAppetizers(){
     //retrieve respected containers
     const appetizerContainer = document.getElementById("Appetizers-name-container");
     const appetizerPriceContainer = document.getElementById("Appetizers-price-container");
-    const appetizerDisplayQuanity = document.getElementById("Appetizers-display-quanity");
+    const appetizerDisplayQuanityContainer = document.getElementById("Appetizers-quanity-display-container");
     const appetizerQuanityButtonContainer = document.getElementById("Appetizers-quanity-button-container");
     const appetizerAddButtonContainer = document.getElementById("Appetizers-add-button-container");
 
@@ -28,22 +28,52 @@ function loadAppetizers(){
         price_liEl.innerText = "$ " + appetizerPrices[i].toFixed(2);
         appetizerPriceContainer.appendChild(price_liEl);
 
-        // quanity
-        // quanity buttons
-        const quanity_buttonEl = document.createElement('button');
-        quanity_buttonEl.innerText = "+";
-        quanity_buttonEl.className = "quanity-button";
-        quanity_buttonEl.addEventListener('click', ()=>{
-            alert("add");
-        });
+        //display quanity 
+        const quanity_spanEl = document.createElement('span');
+        quanity_spanEl.className = "Appetizers-display-quanity";
+        quanity_spanEl.innerText = '0';
+        const leftBracket_spanEl = document.createElement('span');
+        leftBracket_spanEl.innerText = '[';
+        const rightBracket_spanEl = document.createElement('span');
+        rightBracket_spanEl.innerText = ']';
+        
         const quanity_liEl = document.createElement('li');
-        quanity_liEl.appendChild(quanity_buttonEl);
-        appetizerQuanityButtonContainer.appendChild(quanity_liEl);
+        quanity_liEl.append(leftBracket_spanEl, quanity_spanEl, rightBracket_spanEl);
+        appetizerDisplayQuanityContainer.appendChild(quanity_liEl);
+    
+
+
+
+        // quanity buttons
+
+        //increment
+        const incrementQuanity_buttonEl = document.createElement('button');
+        incrementQuanity_buttonEl.innerText = "+";
+        incrementQuanity_buttonEl.className = "increment-quanity-button";
+        incrementQuanity_buttonEl.addEventListener('click', ()=>{
+            let currQuanity = parseInt(appetizerDisplayQuanity.innerText);
+            appetizerDisplayQuanity.innerText = currQuanity+1;
+        });
+
+        const decrementQuanity_buttonEl = document.createElement('button');
+        decrementQuanity_buttonEl.innerText = "-";
+        decrementQuanity_buttonEl.className = "decrement-quanity-button";
+        decrementQuanity_buttonEl.addEventListener('click', ()=>{
+            let currQuanity = parseInt(appetizerDisplayQuanity.innerText);
+            
+            //non-negative quanity
+            if(currQuanity > 0)
+                appetizerDisplayQuanity.innerText = currQuanity-1;
+        });
+
+        //decrement
+        const quanityButtons_liEl = document.createElement('li');
+        quanityButtons_liEl.append(incrementQuanity_buttonEl, decrementQuanity_buttonEl);
+        appetizerQuanityButtonContainer.appendChild(quanityButtons_liEl);
     
         //add order button
         const add_buttonEl = document.createElement('button'); //make button
         add_buttonEl.innerText = "ADD"; //button name
-        // add_buttonEl.className = "add-item-button"; //button class name
         add_buttonEl.addEventListener('click', ()=>{addItemToShoppingCart(appetizerNames[i],appetizerPrices[i])});
     
         const addButton_liEl = document.createElement('li');
@@ -129,7 +159,6 @@ function clearCart(){
 }
 
 
-
 function submitOrder() {
     if (shoppingCart.length === 0) {
         alert('Shopping Cart is empty!');
@@ -150,6 +179,8 @@ function submitOrder() {
             alert('There was an error submitting your order.');
         });
 }
+
+
 window.onload = function(){
     const clearButtonEl = document.getElementById('clear-shopping-cart-button').addEventListener('click', clearCart);
     const sumbitOrderButtonEl = document.getElementById('submit-order-button').addEventListener('click', submitOrder);
